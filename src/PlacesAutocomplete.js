@@ -343,33 +343,33 @@ class PlacesAutocomplete extends React.Component {
   };
 
  //PATCHED
-    _this.handleSuggestionClick = function (suggestion, event) {
+handleSuggestionClick = (suggestion, event) => {
       if (event && event.preventDefault) {
         event.preventDefault();
       }
-       if (_this.state.suggestions.length === 0) {
+       if (this.state.suggestions.length === 0) {
         return;
       }
-      var activeSuggestion = _this.getActiveSuggestion();
+      var activeSuggestion = this.getActiveSuggestion();
       //PAB PATCH STARTS HERE:
       //COPIED FROM DOWN KEY
       if (activeSuggestion === undefined) {
-        _this.selectActiveAtIndex(0);
-      } else if (activeSuggestion.index === _this.state.suggestions.length - 1) {
-        _this.selectUserInputValue();
+        this.selectActiveAtIndex(0);
+      } else if (activeSuggestion.index === this.state.suggestions.length - 1) {
+        this.selectUserInputValue();
       } else {
          //EDITTED TO BE THE CORRECT INDEX!  
-        _this.selectActiveAtIndex(activeSuggestion.index);
+        this.selectActiveAtIndex(activeSuggestion.index);
       }
       //COPIED FROM ENTER KEY
       if (activeSuggestion === undefined) {
-        _this.handleSelect(_this.props.value, null);
+        this.handleSelect(this.props.value, null);
       } else {
-        _this.handleSelect(activeSuggestion.description, activeSuggestion.placeId);
+        this.handleSelect(activeSuggestion.description, activeSuggestion.placeId);
       }
      
       setTimeout(function () {
-        _this.mousedownOnSuggestion = false;
+        this.mousedownOnSuggestion = false;
       });
     };
 
